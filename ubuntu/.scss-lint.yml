@@ -1,0 +1,17 @@
+linters:
+  BemDepth:
+    max_elements: 1
+
+  EmptyLineBetweenBlocks:
+    ignore_single_line_blocks: true
+
+  PropertySortOrder:
+    order: concentric
+
+  SelectorFormat:
+    convention: hyphenated_BEM
+
+  SingleLinePerProperty:
+    allow_single_line_rule_sets: false
+
+

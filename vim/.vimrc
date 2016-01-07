@@ -30,6 +30,11 @@ set statusline+=\ [line/col\ %l,%v]
 set colorcolumn=80             " Highlight columns > 80
 set cursorline                 " Highlight the current line
 filetype off                   " required
+set syntax=eslint
+" ## Paste toggle
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
 
 " #######  VUNDLE PLUGINS  #######
 
@@ -60,10 +65,18 @@ Plugin 'nathanaelkane/vim-indent-guides'
 " ## Javascript
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'Raimondi/delimitMate'
-
-" ## Syntax & Linters
+Plugin 'mxw/vim-jsx'
 Plugin 'jelera/vim-javascript-syntax'
+Plugin 'pangloss/vim-javascript'
+
+" ## Ruby
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-liquid'
+
+" ## SCSS
 Plugin 'cakebaker/scss-syntax.vim'
+
+" ## Syntastic Linting
 Plugin 'scrooloose/syntastic'
 
 " ## plugin from http://vim-scripts.org/vim/scripts.html
@@ -98,8 +111,7 @@ filetype plugin indent on    " required
 
 " ## Active theme
 if &t_Co >= 256 || has("gui_running")
-  colorscheme Tomorrow-Night-Eighties
-  "colorscheme railscasts
+  colorscheme railscasts
 endif
 
 " ## Remove Trailing White Space automatically on save
@@ -119,8 +131,6 @@ if &t_Co > 2 || has("gui_running")
   syntax on
 endif
 
-" #######  KEY MAPPINGS  #######
-
 " #######  PLUGIN SETTINGS  #######
 
 " ## Ack
@@ -137,12 +147,18 @@ set wildignore+=/tmp/,*/tmp/*,*.so,*.swp,*.zip
 
 " ## Syntastic
 let g:syntastic_check_on_open=1
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['eslint']
 
 if has("autocmd")
   au  BufNewFile,BufRead *.mustache,*.hogan,*.hulk,*.hjs set filetype=html.mustache syntax=mustache | runtime! ftplugin/mustache.vim ftplugin/mustache*.vim ftplugin/mustache/*.vim
   au  BufNewFile,BufRead *.handlebars,*.hbs set filetype=html.handlebars syntax=mustache | runtime! ftplugin/mustache.vim ftplugin/mustache*.vim ftplugin/mustache/*.vim
 endif
+
+" ## Disable HTML Tidy
+
+let g:syntastic_mode_map={ 'mode': 'active',
+                     \ 'active_filetypes': [],
+                     \ 'passive_filetypes': ['html'] }
 
 " ## Emmet
 " To use Emmet, always remember to press , after key map

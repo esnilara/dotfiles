@@ -2,10 +2,11 @@
 export PATH=/usr/local/bin:$PATH
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
 export NVM_DIR=~/.nvm
+export LC_ALL="en_US.UTF-8"
 
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+# Use VIM as default editor
+export VISUAL=vim
+export EDITOR="$VISUAL"
 
 # If not running interactively, don't do anything
 case $- in
@@ -51,42 +52,7 @@ fi
 
 if tput setaf 1 &> /dev/null; then
   tput sgr0
-  if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
-    BLACK=$(tput setaf 190)
-    MAGENTA=$(tput setaf 9)
-    ORANGE=$(tput setaf 172)
-    GREEN=$(tput setaf 190)
-    PURPLE=$(tput setaf 141)
-    WHITE=$(tput setaf 0)
-  else
-    BLACK=$(tput setaf 190)
-    MAGENTA=$(tput setaf 5)
-    ORANGE=$(tput setaf 4)
-    GREEN=$(tput setaf 2)
-    PURPLE=$(tput setaf 1)
-    WHITE=$(tput setaf 7)
-  fi
-  BOLD=$(tput bold)
-  RESET=$(tput sgr0)
-else
-  BLACK="\033[01;30m"
-  MAGENTA="\033[1;31m"
-  ORANGE="\033[1;33m"
-  GREEN="\033[1;32m"
-  PURPLE="\033[1;35m"
-  WHITE="\033[1;37m"
-  BOLD=""
-  RESET="\033[m"
 fi
-
-export BLACK
-export MAGENTA
-export ORANGE
-export GREEN
-export PURPLE
-export WHITE
-export BOLD
-export RESET
 
 # Git branch details
 function parse_git_dirty() {
@@ -104,8 +70,9 @@ export PS1="\[${BOLD}${MAGENTA}\]\u \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\$([[ -n 
 export PS2="\[$ORANGE\]→ \[$RESET\]"
 
 # Aliases
-alias bashedit='subl ~/.bashrc'
-alias editbash='subl ~/.bashrc'
+alias bashedit='vim ~/.bashrc'
+alias editbash='vim ~/.bashrc'
+alias vimedit='vim ~/.vimrc'
 alias t='task'
 alias workspace="cd ~/workspace"
 alias ws="cd ~/workspace"
@@ -141,12 +108,26 @@ alias pll="git pull origin" #pull from origin specifying branch, ex. pll master
 alias cmm="git commit -m" #commit
 alias cmma="git commit -am" #commit and add modified files
 
+# Development Environment
+alias fs="foreman start"
+alias es="ember server"
+alias ngrok="~/./ngrok start ember ssh"
+
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Only show the current directory's name in the tab
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
+
+# List processes running into port
+function checkforport() {
+  lsof -ti:$1
+}
+
+function killtheport() {
+  lsof -ti:$1 | xargs kill -9
+}
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like

@@ -1,0 +1,13 @@
+authtoken: 2Bfqs5woozV3JKrmZNxjM_7KHnZNADQ4r4BizT1wi9F
+tunnels:
+  ember:
+    addr: 4200
+    proto: http
+  ssh:
+    addr: 22
+    proto: tcp
+  rails:
+    addr: 5000
+    proto: http
+
+

@@ -1,0 +1,41 @@
+## esnilara's .screenrc
+## Twitter: @esnilara
+
+# Fix Shift-PageUp and PageDown in gnome terminal
+#termcapinfo xterm ti@:te@
+
+# Stop typing -e ^jj every time you invoke screen
+escape ^jj
+
+# Change command character from ctrl+a to ctrol+q
+escape ^Bb
+
+# Dont display the copyright page
+startup_message off
+
+# Tab completion flash in heading bar
+vbell off
+
+# Keep scrollbar n lines
+defscrollback 5000
+
+# Screen, with the time and date and with current window highlighted
+hardstatus      alwayslastline
+
+# Don't block command output if the terminal stops responding
+nonblock on
+
+# Allow editors etc. to restore display on exit
+# rather than leaving existing text in place
+altscreen on
+
+# Enable 256-color mode when screen is started with XTERM-xterm-256color
+attrcolor b ".I"
+defbce "on"
+
+# Allow bold colors
+attrcolor b ".I"
+
+
+#hardstatus string '%{= mK}%-Lw%{= KW}%50>%n%f* %t%{= mK}%+Lw%< %{= kG}%-=%D %d %M %Y %c:%s%{-}'
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
