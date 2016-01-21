@@ -31,10 +31,52 @@ set colorcolumn=80             " Highlight columns > 80
 set cursorline                 " Highlight the current line
 filetype off                   " required
 set syntax=eslint
+
 " ## Paste toggle
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
+
+" ## Windows split configuration
+set winwidth=84
+set winheight=5
+set winminheight=5
+set winheight=999
+
+" #######  GENERAL SETTINGS  #######
+
+" ## Active theme
+if &t_Co >= 256 || has("gui_running")
+  colorscheme railscasts
+endif
+
+" ## Remove Trailing White Space automatically on save
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
+" ## autocmd FileType c,cpp,java,php,ruby,python autocmd
+" ## BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
+" ## Switch syntax highlighting on, when the terminal has colors
+if &t_Co > 2 || has("gui_running")
+  syntax on
+endif
+
+" ## Toggle relative number lines
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+
+nnoremap <C-n> :call NumberToggle()<cr>
 
 " #######  VUNDLE PLUGINS  #######
 
@@ -56,11 +98,13 @@ Plugin 'matze/vim-move'
 
 " ## Git
 Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
 
 " ## Visual Enhancements
 Plugin 'flazz/vim-colorschemes'
 Plugin 'ap/vim-css-color'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'w0ng/vim-hybrid'
 
 " ## Javascript
 Plugin 'mustache/vim-mustache-handlebars'
@@ -69,9 +113,12 @@ Plugin 'mxw/vim-jsx'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 
-" ## Ruby
+" ## Ruby & Ruby and Rails
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-bundler'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-liquid'
+Plugin 'janko-m/vim-test'
 
 " ## SCSS
 Plugin 'cakebaker/scss-syntax.vim'
@@ -106,30 +153,6 @@ filetype plugin indent on    " required
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
 " see :h vundle for more details or wiki for FAQ
-
-" #######  GENERAL SETTINGS  #######
-
-" ## Active theme
-if &t_Co >= 256 || has("gui_running")
-  colorscheme railscasts
-endif
-
-" ## Remove Trailing White Space automatically on save
-fun! <SID>StripTrailingWhitespaces()
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    call cursor(l, c)
-endfun
-
-" ## autocmd FileType c,cpp,java,php,ruby,python autocmd
-" ## BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
-
-" ## Switch syntax highlighting on, when the terminal has colors
-if &t_Co > 2 || has("gui_running")
-  syntax on
-endif
 
 " #######  PLUGIN SETTINGS  #######
 
