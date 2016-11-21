@@ -4,7 +4,7 @@ set nobackup                   " No backup file
 set noswapfile                 " No backup file
 set history=1000               " Remember more commands and search history
 set undolevels=1000            " Use many muchos levels of undo
-set visualbell                 " Don't beep
+"set visualbell                 " Don't beep
 set noerrorbells               " Don't beep
 set title                      " Change the terminal's title
 set scrolloff=3                " Start scrolling 3 lines before the border
@@ -91,10 +91,10 @@ set winminheight=5
 set winheight=999
 
 " Disable arrow keys
-noremap <Up> :echo "no!"<cr>
-noremap <Down> :echo "no!"<cr>
-noremap <Left> :echo "no!"<cr>
-noremap <Right> :echo "no!"<cr>
+"noremap <Up> <NOP>
+"noremap <Down> <NOP>
+"noremap <Left> <NOP>
+"noremap <Right> <NOP>
 
 " #### VUNDLE PLUGINS  ======================
 filetype off
@@ -111,7 +111,6 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'mattn/emmet-vim'
 Plugin 'vim-airline/vim-airline'
-Plugin 'ludovicchabant/vim-gutentags'
 
 " Images
 Plugin 'ashisha/image.vim'
@@ -137,6 +136,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'elzr/vim-json'
 Plugin 'mxw/vim-jsx'
+Plugin 'mustache/vim-mustache-handlebars'
 
 " Ruby
 Plugin 'vim-ruby/vim-ruby'
