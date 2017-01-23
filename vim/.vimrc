@@ -66,11 +66,22 @@ set statusline+=\ [line/col\ %l,%v]
 set enc=utf-8
 
 " Set 256 color support
-set t_Co=256
-set term=screen-256color
-let $TERM='screen-256color'
-let &t_AB="\e[48;5;%dm"
-let &t_AF="\e[38;5;%dm"
+"set t_Co=256
+"set term=screen-256color
+"let $TERM='screen-256color'
+"let &t_AB="\e[48;5;%dm"
+"let &t_AF="\e[38;5;%dm"
+
+" Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+if (has("nvim"))
+  " For Neovim 0.1.3 and 0.1.4
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+
+"For Neovim > 0.1.5 and Vim > patch 7.4.1799
+if (has("termguicolors"))
+  set termguicolors
+endif
 
 " Set Theme
 colorscheme railscasts
@@ -147,6 +158,9 @@ Plugin 'tpope/vim-liquid'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-bundler'
 Plugin 'janko-m/vim-test'
+
+" PHP
+Plugin 'StanAngeloff/php.vim'
 
 " Elixir
 Plugin 'elixir-lang/vim-elixir'
