@@ -84,8 +84,12 @@ if (has("termguicolors"))
 endif
 
 " Set Theme
-colorscheme railscasts
+"colorscheme railscasts
+colorscheme onedark
 syntax enable
+
+" Set Vim-Airline Theme
+let g:airline_theme="onedark"
 
 " #### KEYBOARD TWEAKS  ======================
 let mapleader=","
