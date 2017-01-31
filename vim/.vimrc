@@ -84,8 +84,11 @@ if (has("termguicolors"))
 endif
 
 " Set Theme
-"colorscheme railscasts
-colorscheme onedark
+" colorscheme onedark
+ colorscheme base16-railscasts
+" colorscheme atom-dark
+
+set background=dark
 syntax enable
 
 " Set Vim-Airline Theme
