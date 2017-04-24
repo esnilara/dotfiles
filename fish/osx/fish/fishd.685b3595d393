@@ -4,6 +4,7 @@ SET ZO_CMD:zo
 SET Z_CMD:z
 SET Z_DATA:/Users/esnilara/\x2ez
 SET Z_EXCLUDE:/Users/esnilara
+SET __fish_classic_git_prompt_initialized:\x1d
 SET __fish_init_2_39_8:\x1d
 SET __fish_init_2_3_0:\x1d
 SET fish_color_autosuggestion:555\x1ebrblack
@@ -24,6 +25,7 @@ SET fish_color_quote:yellow
 SET fish_color_redirection:brblue
 SET fish_color_search_match:bryellow\x1e\x2d\x2dbackground\x3dbrblack
 SET fish_color_selection:white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrblack
+SET fish_color_status:red
 SET fish_color_user:brgreen
 SET fish_color_valid_path:\x2d\x2dunderline
 SET fish_greeting:\x1d
@@ -32,4 +34,5 @@ SET fish_pager_color_completion:\x1d
 SET fish_pager_color_description:B3A06D\x1eyellow
 SET fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SET fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
+SET fish_user_paths:/Users/esnilara/\x2eyarn/bin
 SET fisher_dependency_count:getopts\x1ez\x1ebass

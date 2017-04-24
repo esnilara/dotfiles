@@ -1,10 +1,11 @@
 # add /usr/local/sbin to your PATH Variable
 set PATH $PATH /usr/local/bin
 
-# nvm
-
 # rvm default
 rvm default
+
+# npm path
+set -gx PATH $PATH ./node_modules/.bin
 
 # make vim the default editor
 set --export EDITOR 'vim -f'
