@@ -1,0 +1,13 @@
+# add /usr/local/sbin to your PATH Variable
+set PATH $PATH /usr/local/bin
+
+# nvm
+
+# rvm default
+rvm default
+
+# make vim the default editor
+set --export EDITOR 'vim -f'
+
+# make vim usable with git
+set --export GIT_EDITOR 'vim -f'
