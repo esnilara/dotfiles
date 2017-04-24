@@ -1,0 +1,1 @@
+/home/esnilara/.config/fisherman/bass/functions/__bass.py
