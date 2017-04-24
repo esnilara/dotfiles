@@ -26,6 +26,9 @@ set shiftwidth=2               " Number of spaces to use for autoindenting
 set shiftround                 " Use multiple of shiftwidth when indenting with '<' and '>'
 set smarttab                   " Insert tabs on the start of a line according to shiftwidth, not tabstop
 
+" Fish shell configuration
+set shell=/bin/sh
+
 " Remove Trailing White Space automatically on save
 fun! <SID>StripTrailingWhitespaces()
   let l = line(".")
@@ -85,10 +88,8 @@ endif
 
 " Set Theme
 " colorscheme onedark
- colorscheme base16-railscasts
 " colorscheme atom-dark
-
-set background=dark
+colorscheme base16-railscasts
 syntax enable
 
 " Set Vim-Airline Theme
@@ -109,10 +110,10 @@ set winminheight=5
 set winheight=999
 
 " Disable arrow keys
-"noremap <Up> <NOP>
-"noremap <Down> <NOP>
-"noremap <Left> <NOP>
-"noremap <Right> <NOP>
+" noremap <Up> <NOP>
+" noremap <Down> <NOP>
+" noremap <Left> <NOP>
+" noremap <Right> <NOP>
 
 " #### VUNDLE PLUGINS  ======================
 filetype off
@@ -129,6 +130,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'mattn/emmet-vim'
 Plugin 'vim-airline/vim-airline'
+Plugin 'dag/vim-fish'
 
 " Images
 Plugin 'ashisha/image.vim'
