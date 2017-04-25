@@ -1,11 +1,14 @@
-# use nvm on start
+# Use nvm on start
 nvm use default --silent
 
-# fix backtick keyboard
+# Fix backtick key in keyboard
 xmodmap -e 'keycode 49 = grave asciitilde'
 
-# Make Vim the default editor
+# Make VIM default editor
 set --export EDITOR 'vim -f'
 
-# Make Vim usable with git
+# Make VIM default for git
 set --export GIT_EDITOR 'vim -f'
+
+# RVM default
+rvm default
