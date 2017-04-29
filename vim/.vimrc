@@ -26,6 +26,9 @@ set shiftwidth=2               " Number of spaces to use for autoindenting
 set shiftround                 " Use multiple of shiftwidth when indenting with '<' and '>'
 set smarttab                   " Insert tabs on the start of a line according to shiftwidth, not tabstop
 
+" Global copy to clipboard
+set clipboard=unnamedplus
+
 " Fish shell configuration
 set shell=/bin/sh
 
@@ -58,6 +61,11 @@ endif
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 
+" Teach a Vim to fish...
+if &shell =~# 'fish$'
+  set shell=sh
+endif
+
 " #### UI TWEAKS ======================
 set number                     " Always show line numbers
 set laststatus=2               " Always display the status line.
@@ -88,8 +96,10 @@ endif
 
 " Set Theme
 " colorscheme onedark
+ colorscheme base16-railscasts
 " colorscheme atom-dark
-colorscheme base16-railscasts
+
+set background=dark
 syntax enable
 
 " Set Vim-Airline Theme
@@ -110,10 +120,10 @@ set winminheight=5
 set winheight=999
 
 " Disable arrow keys
-" noremap <Up> <NOP>
-" noremap <Down> <NOP>
-" noremap <Left> <NOP>
-" noremap <Right> <NOP>
+"noremap <Up> <NOP>
+"noremap <Down> <NOP>
+"noremap <Left> <NOP>
+"noremap <Right> <NOP>
 
 " #### VUNDLE PLUGINS  ======================
 filetype off
@@ -130,6 +140,8 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'mattn/emmet-vim'
 Plugin 'vim-airline/vim-airline'
+
+" Fish Shell
 Plugin 'dag/vim-fish'
 
 " Images
