@@ -144,9 +144,6 @@ Plugin 'vim-airline/vim-airline'
 " Syntax support
 Plugin  'sheerun/vim-polyglot'
 
-" Images
-Plugin 'ashisha/image.vim'
-
 " Git
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
