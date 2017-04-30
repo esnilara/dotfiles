@@ -10,5 +10,8 @@ set --export EDITOR 'vim -f'
 # Make VIM default for git
 set --export GIT_EDITOR 'vim -f'
 
+# Set GOPATH
+set --export GOPATH $HOME/go
+
 # RVM default
 rvm default
