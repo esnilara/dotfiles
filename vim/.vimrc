@@ -141,8 +141,8 @@ Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'mattn/emmet-vim'
 Plugin 'vim-airline/vim-airline'
 
-" Fish Shell
-Plugin 'dag/vim-fish'
+" Syntax support
+Plugin  'sheerun/vim-polyglot'
 
 " Images
 Plugin 'ashisha/image.vim'
@@ -157,34 +157,13 @@ Plugin 'ap/vim-css-color'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'w0ng/vim-hybrid'
 
-" Web Development (HTML, Preprocessors, etc)
-Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'othree/html5.vim'
-Plugin 'tpope/vim-haml'
-Plugin 'hail2u/vim-css3-syntax'
-
-" Javascript
-Plugin 'pangloss/vim-javascript'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'elzr/vim-json'
-Plugin 'mxw/vim-jsx'
-Plugin 'mustache/vim-mustache-handlebars'
-
 " Ruby
-Plugin 'vim-ruby/vim-ruby'
 Plugin 'ngmy/vim-rubocop'
-Plugin 'tpope/vim-liquid'
 
 " Ruby on Rails
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-bundler'
 Plugin 'janko-m/vim-test'
-
-" PHP
-Plugin 'StanAngeloff/php.vim'
-
-" Elixir
-Plugin 'elixir-lang/vim-elixir'
 
 " Phoenix
 Plugin 'c-brenn/phoenix.vim'
