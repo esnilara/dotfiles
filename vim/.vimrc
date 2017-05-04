@@ -27,7 +27,11 @@ set shiftround                 " Use multiple of shiftwidth when indenting with 
 set smarttab                   " Insert tabs on the start of a line according to shiftwidth, not tabstop
 
 " Global copy to clipboard
-set clipboard=unnamedplus
+if has('macunix')
+  set clipboard=unnamed
+else
+  set clipboard=unnamedplud
+endif
 
 " Fish shell configuration
 set shell=/bin/sh
