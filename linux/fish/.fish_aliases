@@ -35,6 +35,7 @@ alias gl "git log --graph --oneline --decorate"
 alias psh "git push origin"
 alias pll "git pull origin"
 alias cm "git commit"
+alias cmam "git commit --amend"
 alias cmm "git commit -m"
 alias cmma "git commit -am"
 
