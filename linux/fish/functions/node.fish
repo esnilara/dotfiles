@@ -1,0 +1,1 @@
+/home/esnilara/.config/fisherman/nvm/node.fish
