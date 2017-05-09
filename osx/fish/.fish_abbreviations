@@ -1,0 +1,40 @@
+# Quicker navigation
+abbr .. "cd .."
+abbr ... "cd ../.."
+abbr .... "cd ../../.."
+abbr ..... "cd ../../../.."
+abbr q "exit"
+abbr cl "clear"
+
+# Development shortcuts
+abbr es "ember server"
+abbr et "ember exam --split=4 --parallel --random"
+abbr ets "ember exam --server --random"
+abbr fs "foreman start"
+abbr er "rm -rf node_modules bower_components tmp dist; yarn install; bower install"
+
+# Folder shortcuts
+abbr workspace "cd ~/workspace"
+abbr ws "cd ~/workspace"
+
+# Enable abbres to be sudo'ed
+abbr sudo "sudo"
+
+# Git abbres
+abbr gf "git fetch"
+abbr gfo "git fetch origin"
+abbr gfp "git fetch --prune"
+abbr gs "git status"
+abbr ga "git add -A"
+abbr gap "git add -p"
+abbr go "git checkout"
+abbr gb "git branch"
+abbr gbr "git branch -r"
+abbr gr "git rebase"
+abbr gl "git log --graph --oneline --decorate"
+abbr psh "git push origin"
+abbr pll "git pull origin"
+abbr cm "git commit"
+abbr cmam "git commit --amend"
+abbr cmm "git commit -m"
+abbr cmma "git commit -am"
