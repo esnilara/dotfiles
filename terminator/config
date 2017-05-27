@@ -1,7 +1,16 @@
 [global_config]
-  putty_paste_style = True
-  title_font = Ubuntu Mono Bold 10
+  title_font = Ubuntu Mono Bold 12
+  window_state = maximise
 [keybindings]
+  reset_clear = <Ctrl>R
+  new_tab = <Ctrl>T
+  split_horiz = <Ctrl><Shift>E
+  split_vert = <Ctrl>E
+  close_term = <Ctrl><Shift>W
+  search = <Ctrl>F
+  full_screen = <Ctrl><Shift>F
+  new_window = <Ctrl>N
+  scaled_zoom = <Ctrl><Shift>K
 [layouts]
   [[default]]
     [[[child1]]]
@@ -15,8 +24,9 @@
   [[default]]
     allow_bold = False
     background_color = "#1f1d45"
+    copy_on_selection = True
     cursor_color = "#efbf38"
-    font = Ubuntu Mono Bold 12
+    font = UbuntuMono Nerd Font Bold 12
     foreground_color = "#f8dcc0"
     palette = "#050404:#bd0013:#4ab118:#e7741e:#0f4ac6:#665993:#70a598:#f8dcc0:#4e7cbf:#fc5f5a:#9eff6e:#efc11a:#1997c6:#9b5953:#c8faf4:#f6f5fb"
     scrollback_lines = 1000
