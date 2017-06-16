@@ -2,9 +2,17 @@
 set nocompatible               " Use Vim settings, rather then Vi settings
 set nobackup                   " No backup file
 set noswapfile                 " No backup file
+
+" Undo
+call system("mkdir -p $HOME/.vim/undo")
+set hidden
 set history=1000               " Remember more commands and search history
+set undodir=$HOME/.vim/undo/
+set undofile
 set undolevels=1000            " Use many muchos levels of undo
-"set visualbell                 " Don't beep
+set undoreload=10000
+
+"set visualbell                " Don't beep
 set noerrorbells               " Don't beep
 set title                      " Change the terminal's title
 set scrolloff=3                " Start scrolling 3 lines before the border
