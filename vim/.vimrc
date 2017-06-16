@@ -107,7 +107,7 @@ set background=dark
 syntax enable
 
 " Set Vim-Airline Theme
-let g:airline_theme="onedark"
+" let g:airline_theme="onedark"
 
 " #### KEYBOARD TWEAKS  ======================
 let mapleader=","
@@ -140,7 +140,7 @@ Plugin 'gmarik/Vundle.vim'
 " Vim Superpowers
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'mattn/emmet-vim'
 Plugin 'vim-airline/vim-airline'
@@ -157,6 +157,8 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'ap/vim-css-color'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'w0ng/vim-hybrid'
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plugin 'ryanoasis/vim-devicons'
 
 " Ruby
 Plugin 'ngmy/vim-rubocop'
