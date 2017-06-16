@@ -152,6 +152,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'mattn/emmet-vim'
 Plugin 'vim-airline/vim-airline'
+Plugin 'Valloric/YouCompleteMe'
 
 " Syntax support
 Plugin  'sheerun/vim-polyglot'
