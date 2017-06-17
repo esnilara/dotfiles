@@ -192,8 +192,9 @@ filetype plugin indent on    " required
 " #### PLUGIN SETTINGS  ======================
 
 " ## NERDTree
-let g:nerdtree_tabs_open_on_console_startup=1             " Set on startup
-set wildignore+=/tmp/,*/tmp/*,*.so,*.swp,*.zip            " Ignore files
+let g:nerdtree_tabs_open_on_console_startup=1        " Set on startup
+autocmd VimEnter * wincmd w                          " Jump to main window on start
+set wildignore+=/tmp/,*/tmp/*,*.so,*.swp,*.zip       " Ignore files
 
 " ## Syntastic
 let g:syntastic_check_on_open=1
