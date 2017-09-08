@@ -194,6 +194,8 @@ filetype plugin indent on    " required
 " ## NERDTree
 let g:nerdtree_tabs_open_on_console_startup=0        " Set on startup
 set wildignore+=/tmp/,*/tmp/*,*.so,*.swp,*.zip       " Ignore files
+nmap <leader>ne :NERDTree<cr>
+nmap <leader>nf :NERDTreeFind<cr>
 
 " ## Syntastic
 let g:syntastic_check_on_open=1
