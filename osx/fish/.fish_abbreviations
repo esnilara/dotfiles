@@ -8,9 +8,10 @@ abbr cl "clear"
 
 # Development shortcuts
 abbr es "ember server"
-abbr et "ember exam --split=4 --parallel --random"
+abbr et "ember exam --split=4 --parallel"
 abbr ets "ember exam --server --random"
 abbr fs "foreman start"
+abbr fl "tail -f log/development.log"
 abbr er "rm -rf node_modules bower_components tmp dist; yarn install; bower install"
 
 # Folder shortcuts
