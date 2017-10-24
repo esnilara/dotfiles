@@ -54,10 +54,12 @@ endfun
 
 " Toggle relative number lines
 function! NumberToggle()
-  if (&relativenumber == 1)
-    set number
+  if(&nu == 1)
+    set nu!
+    set rnu
   else
-    set relativenumber
+    set nornu
+    set nu
   endif
 endfunc
 
