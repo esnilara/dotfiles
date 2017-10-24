@@ -147,7 +147,6 @@ Plugin 'gmarik/Vundle.vim'
 
 " Vim Superpowers
 Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'mattn/emmet-vim'
@@ -163,24 +162,10 @@ Plugin 'tpope/vim-fugitive'
 
 " Visual Enhancements
 Plugin 'flazz/vim-colorschemes'
-Plugin 'ap/vim-css-color'
 Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'w0ng/vim-hybrid'
-Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plugin 'ryanoasis/vim-devicons'
 
 " Ruby
 Plugin 'ngmy/vim-rubocop'
-
-" Ruby on Rails
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-bundler'
-Plugin 'janko-m/vim-test'
-
-" Phoenix
-Plugin 'c-brenn/phoenix.vim'
-Plugin 'tpope/vim-projectionist'
-Plugin 'slashmili/alchemist.vim'
 
 " Syntastic Linting
 Plugin 'scrooloose/syntastic'
@@ -201,12 +186,16 @@ nmap <leader>nf :NERDTreeFind<cr>
 let g:syntastic_check_on_open=1
 let g:syntastic_javascript_checkers = ['eslint']
 
-" autocmd FileType c, cpp, java, php, ruby, python autocmd
-" BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
-autocmd BufNewFile,BufReadPost *.md, *.markdown set filetype=markdown
-autocmd BufNewFile,BufRead *.mustache,*.hogan,*.hulk,*.hjs set filetype=html.mustache syntax=mustache | runtime! ftplugin/mustache.vim ftplugin/mustache*.vim ftplugin/mustache/*.vim
-autocmd BufNewFile,BufRead *.handlebars,*.hbs set filetype=html.handlebars syntax=mustache | runtime! ftplugin/mustache.vim ftplugin/mustache*.vim ftplugin/mustache/*.vim
+augroup vimrc_autocmd
+  autocmd!
+
+  " autocmd FileType c, cpp, java, php, ruby, python autocmd
+  " BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+  autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+  autocmd BufNewFile,BufReadPost *.md, *.markdown set filetype=markdown
+  autocmd BufNewFile,BufRead *.mustache,*.hogan,*.hulk,*.hjs set filetype=html.mustache syntax=mustache | runtime! ftplugin/mustache.vim ftplugin/mustache*.vim ftplugin/mustache/*.vim
+  autocmd BufNewFile,BufRead *.handlebars,*.hbs set filetype=html.handlebars syntax=mustache | runtime! ftplugin/mustache.vim ftplugin/mustache*.vim ftplugin/mustache/*.vim
+augroup END
 
 " Disable HTML Tidy
 let g:syntastic_mode_map={ 'mode': 'active',
@@ -215,9 +204,6 @@ let g:syntastic_mode_map={ 'mode': 'active',
 
 " ## GutenTags Cache Dir
 let g:gutentags_cache_dir = '~/.tags_cache'
-
-" ## Alchemist Configuration
-let g:alchemist_tag_disable = 1
 
 " ## Emmet
 let g:user_emmet_leader_key = '<c-z>'         " To use Emmet, always remember to press , after key map
