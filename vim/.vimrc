@@ -162,7 +162,6 @@ Plugin  'sheerun/vim-polyglot'
 Plugin 'airblade/vim-gitgutter'
 
 " Visual Enhancements
-Plugin 'flazz/vim-colorschemes'
 Plugin 'nathanaelkane/vim-indent-guides'
 
 " Ruby
