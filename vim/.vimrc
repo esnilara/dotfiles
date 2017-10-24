@@ -160,7 +160,6 @@ Plugin  'sheerun/vim-polyglot'
 
 " Git
 Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-fugitive'
 
 " Visual Enhancements
 Plugin 'flazz/vim-colorschemes'
