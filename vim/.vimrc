@@ -1,7 +1,26 @@
-" #### GENERAL SETTINGS  ======================
+"  ____ ____ ____ ____ ____ ____ ____ ____
+" ||e |||s |||n |||i |||l |||a |||r |||a ||
+" ||__|||__|||__|||__|||__|||__|||__|||__||
+" |/__\|/__\|/__\|/__\|/__\|/__\|/__\|/__\|
+"
+" esnilara's .vimrc file
+"
+"
+" ======================================================================
+" GENERAL SETTINGS
+" ======================================================================
+"
 set nocompatible               " Use Vim settings, rather then Vi settings
 set nobackup                   " No backup file
 set noswapfile                 " No backup file
+set pastetoggle=<F2>           " Avoid cascading indents when pasting large amounts of text
+set showmode
+
+" Windows split configuration
+set winwidth=84
+set winheight=5
+set winminheight=5
+set winheight=999
 
 " Undo
 call system("mkdir -p $HOME/.vim/undo")
@@ -52,7 +71,7 @@ fun! <SID>StripTrailingWhitespaces()
   call cursor(l, c)
 endfun
 
-" Toggle relative number lines
+" Relative number lines
 function! NumberToggle()
   if(&nu == 1)
     set nu!
@@ -63,8 +82,6 @@ function! NumberToggle()
   endif
 endfunc
 
-nnoremap <C-n> :call NumberToggle()<cr>
-
 " The Silver Searcher Configuration
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
@@ -72,7 +89,6 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 
 " Teach a Vim to fish...
@@ -80,7 +96,36 @@ if &shell =~# 'fish$'
   set shell=sh
 endif
 
-" #### UI TWEAKS ======================
+" ======================================================================
+" KEY MAPS
+" ======================================================================
+
+" Map Leader
+let mapleader=","
+
+" Emmet
+let g:user_emmet_leader_key = '<c-z>' " To use Emmet, always remember to press , after key map
+
+" Toggle relative number lines
+nnoremap <C-n> :call NumberToggle()<cr>
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" Paste toggle
+nnoremap <F2> :set invpaste paste?<CR>
+
+" NERDTree commands
+nmap <leader>ne :NERDTree<cr>
+nmap <leader>nf :NERDTreeFind<cr>
+
+" Disable arrow keys
+"noremap <Up> <NOP>
+"noremap <Down> <NOP>
+"noremap <Left> <NOP>
+"noremap <Right> <NOP>
+
+" ======================================================================
+" UI TWEAKS
+" ======================================================================
 set number                     " Always show line numbers
 set laststatus=2               " Always display the status line.
 set colorcolumn=90             " Highlight columns > 90
@@ -91,11 +136,11 @@ set statusline+=\ [line/col\ %l,%v]
 set enc=utf-8
 
 " Set 256 color support
-"set t_Co=256
-"set term=screen-256color
-"let $TERM='screen-256color'
-"let &t_AB="\e[48;5;%dm"
-"let &t_AF="\e[38;5;%dm"
+" set t_Co=256
+" set term=screen-256color
+" let $TERM='screen-256color'
+" let &t_AB="\e[48;5;%dm"
+" let &t_AF="\e[38;5;%dm"
 
 " Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 if (has("nvim"))
@@ -110,36 +155,17 @@ endif
 
 " Set Theme
 " colorscheme onedark
- colorscheme base16-railscasts
 " colorscheme atom-dark
-
+colorscheme base16-railscasts
 set background=dark
 syntax enable
 
 " Set Vim-Airline Theme
 " let g:airline_theme="onedark"
 
-" #### KEYBOARD TWEAKS  ======================
-let mapleader=","
-
-" Paste toggle
-nnoremap <F2> :set invpaste paste?<CR>
-set pastetoggle=<F2>           " Avoid cascading indents when pasting large amounts of text
-set showmode
-
-" Windows split configuration
-set winwidth=84
-set winheight=5
-set winminheight=5
-set winheight=999
-
-" Disable arrow keys
-"noremap <Up> <NOP>
-"noremap <Down> <NOP>
-"noremap <Left> <NOP>
-"noremap <Right> <NOP>
-
-" #### VUNDLE PLUGINS  ======================
+" ======================================================================
+" VUNDLE PLUGINS
+" ======================================================================
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -174,23 +200,20 @@ Plugin 'scrooloose/syntastic'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-" #### PLUGIN SETTINGS  ======================
+" ======================================================================
+" PLUGIN CONFIGURATION
+" ======================================================================
 
-" ## NERDTree
+" NERDTree
 let g:nerdtree_tabs_open_on_console_startup=0        " Set on startup
 set wildignore+=/tmp/,*/tmp/*,*.so,*.swp,*.zip       " Ignore files
-nmap <leader>ne :NERDTree<cr>
-nmap <leader>nf :NERDTreeFind<cr>
 
-" ## Syntastic
+" Syntastic
 let g:syntastic_check_on_open=1
 let g:syntastic_javascript_checkers = ['eslint']
 
 augroup vimrc_autocmd
   autocmd!
-
-  " autocmd FileType c, cpp, java, php, ruby, python autocmd
-  " BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
   autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
   autocmd BufNewFile,BufReadPost *.md, *.markdown set filetype=markdown
   autocmd BufNewFile,BufRead *.mustache,*.hogan,*.hulk,*.hjs set filetype=html.mustache syntax=mustache | runtime! ftplugin/mustache.vim ftplugin/mustache*.vim ftplugin/mustache/*.vim
@@ -202,8 +225,5 @@ let g:syntastic_mode_map={ 'mode': 'active',
                      \ 'active_filetypes': [],
                      \ 'passive_filetypes': ['html'] }
 
-" ## GutenTags Cache Dir
+" GutenTags Cache Dir
 let g:gutentags_cache_dir = '~/.tags_cache'
-
-" ## Emmet
-let g:user_emmet_leader_key = '<c-z>'         " To use Emmet, always remember to press , after key map
