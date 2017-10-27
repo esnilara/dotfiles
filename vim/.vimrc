@@ -106,7 +106,6 @@ let g:user_emmet_leader_key = '<c-z>' " To use Emmet, always remember to press ,
 
 " Toggle relative number lines
 nnoremap <C-n> :call NumberToggle()<CR>
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " Paste toggle
 nnoremap <F2> :set invpaste paste?<CR>
@@ -115,10 +114,18 @@ nnoremap <F2> :set invpaste paste?<CR>
 nmap <leader>ne :NERDTree<CR>
 nmap <leader>nf :NERDTreeFind<CR>
 
+" Ag Search for word
+nmap <M-k>:Ag "<cword>"<CR>
+nmap <Esc>k :Ag "<cword>"<CR>
+
+" bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
 " fzf
 nmap ; :Buffers<CR>
 nmap <C-p> :Files<CR>
 nmap <Leader>r :Tags<CR>
+
 
 " Disable arrow keys
 "noremap <Up> <NOP>
