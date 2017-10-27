@@ -85,8 +85,6 @@ endfunc
 " The Silver Searcher Configuration
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" --ignore-dir=DS_Store --ignore-dir=git --ignore-dir=node_modules --ignore-dir=bower_components --ignore-dir=tmp --ignore-dir=dist'
-  let g:ctrlp_use_caching = 0
 endif
 
 command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
@@ -107,15 +105,20 @@ let mapleader=","
 let g:user_emmet_leader_key = '<c-z>' " To use Emmet, always remember to press , after key map
 
 " Toggle relative number lines
-nnoremap <C-n> :call NumberToggle()<cr>
+nnoremap <C-n> :call NumberToggle()<CR>
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " Paste toggle
 nnoremap <F2> :set invpaste paste?<CR>
 
 " NERDTree commands
-nmap <leader>ne :NERDTree<cr>
-nmap <leader>nf :NERDTreeFind<cr>
+nmap <leader>ne :NERDTree<CR>
+nmap <leader>nf :NERDTreeFind<CR>
+
+" fzf
+nmap ; :Buffers<CR>
+nmap <C-p> :Files<CR>
+nmap <Leader>r :Tags<CR>
 
 " Disable arrow keys
 "noremap <Up> <NOP>
@@ -175,7 +178,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " Vim Superpowers
 Plugin 'scrooloose/nerdtree'
-Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'junegunn/fzf.vim'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'mattn/emmet-vim'
 Plugin 'vim-airline/vim-airline'
@@ -211,6 +214,9 @@ set wildignore+=/tmp/,*/tmp/*,*.so,*.swp,*.zip       " Ignore files
 " Syntastic
 let g:syntastic_check_on_open=1
 let g:syntastic_javascript_checkers = ['eslint']
+
+" fzf
+set rtp+=/usr/local/opt/fzf
 
 augroup vimrc_autocmd
   autocmd!
