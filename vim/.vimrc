@@ -21,6 +21,7 @@ set winwidth=84
 set winheight=5
 set winminheight=5
 set winheight=999
+set switchbuf+=usetab,newtab " Open quickfix view files in new tab
 
 " Undo
 call system("mkdir -p $HOME/.vim/undo")
