@@ -12,3 +12,10 @@ set --export EDITOR 'vim -f'
 
 # make vim usable with git
 set --export GIT_EDITOR 'vim -f'
+
+# set ag as default for fzf
+set -g -x FZF_DEFAULT_COMMAND 'ag -g ""'
+
+# nvm path
+#set -x NVM_DIR ~/.nvm
+nvm use default --silent
