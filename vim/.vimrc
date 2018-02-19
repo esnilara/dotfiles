@@ -186,6 +186,8 @@ Plugin 'gmarik/Vundle.vim'
 
 " Vim Superpowers
 Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'mattn/emmet-vim'
@@ -224,7 +226,8 @@ let g:syntastic_check_on_open=1
 let g:syntastic_javascript_checkers = ['eslint']
 
 " fzf
-set rtp+=/usr/local/opt/fzf
+set rtp+=/usr/local/opt/fzf " If installed using Homebrew
+"set rtp+=~ " if installed using git
 
 augroup vimrc_autocmd
   autocmd!
