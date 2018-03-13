@@ -8,19 +8,21 @@ abbr cl "clear"
 
 # Development shortcuts
 abbr es "ember server"
-abbr et "ember exam --split=4 --parallel --random"
+abbr et "ember exam --split=4 --parallel"
 abbr ets "ember exam --server --random"
 abbr fs "foreman start"
+abbr rs "rails s -p 5000"
+abbr fl "tail -f log/development.log"
 abbr er "rm -rf node_modules bower_components tmp dist; yarn install; bower install"
 
 # Folder shortcuts
 abbr workspace "cd ~/workspace"
 abbr ws "cd ~/workspace"
 
-# Enable aliases to be sudo'ed
+# Enable abbres to be sudo'ed
 abbr sudo "sudo"
 
-# Git aliases
+# Git abbres
 abbr gf "git fetch"
 abbr gfo "git fetch origin"
 abbr gfp "git fetch --prune"
@@ -38,6 +40,3 @@ abbr cm "git commit"
 abbr cmam "git commit --amend"
 abbr cmm "git commit -m"
 abbr cmma "git commit -am"
-
-# Configuration Shortcuts
-abbr vim_edit "vim ~/.vimrc"
