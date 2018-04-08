@@ -58,7 +58,7 @@ set smarttab                   " Insert tabs on the start of a line according to
 if has('macunix')
   set clipboard=unnamed
 else
-  set clipboard=unnamedplud
+  set clipboard=unnamedplus
 endif
 
 " Fish shell configuration
