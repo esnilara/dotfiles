@@ -4,9 +4,9 @@
 
 ### Step 1
 
-`git clone https://github.com/esnilara/dotfiles`
-`cp dotfiles/vim/.vimrc ~/`
-`cp dotfiles/vim/colors/ ~/.vim/`
+- `git clone https://github.com/esnilara/dotfiles`
+- `cp dotfiles/vim/.vimrc ~/`
+- `cp -r dotfiles/vim/colors/ ~/.vim/`
 
 ### Step 2
 
