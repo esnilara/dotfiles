@@ -147,19 +147,22 @@ set statusline+=\ [line/col\ %l,%v]
 set enc=utf-8
 
 " Set 256 color support
-" set t_Co=256
-" set term=screen-256color
-" let $TERM='screen-256color'
-" let &t_AB="\e[48;5;%dm"
-" let &t_AF="\e[38;5;%dm"
+"set t_Co=256
+"set term=screen-256color
+"let $TERM='screen-256color'
+"let &t_AB="\e[48;5;%dm"
+"let &t_AF="\e[38;5;%dm"
+"
+" tmux bg_color correction hack
+set t_ut=
 
 " Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
-if (has("nvim"))
+" if (has("nvim"))
   " For Neovim 0.1.3 and 0.1.4
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
+"  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+" endif
 
-"For Neovim > 0.1.5 and Vim > patch 7.4.1799
+" For Neovim > 0.1.5 and Vim > patch 7.4.1799
 if (has("termguicolors"))
   set termguicolors
 endif
@@ -172,7 +175,7 @@ set background=dark
 syntax enable
 
 " Set Vim-Airline Theme
-" let g:airline_theme="onedark"
+let g:airline_theme="molokai"
 
 " ======================================================================
 " VUNDLE PLUGINS
@@ -186,12 +189,12 @@ Plugin 'gmarik/Vundle.vim'
 
 " Vim Superpowers
 Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'mattn/emmet-vim'
 Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Valloric/YouCompleteMe'
 
 " Syntax support
@@ -199,6 +202,7 @@ Plugin  'sheerun/vim-polyglot'
 
 " Git
 Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
 
 " Visual Enhancements
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -206,8 +210,14 @@ Plugin 'nathanaelkane/vim-indent-guides'
 " Ruby
 Plugin 'ngmy/vim-rubocop'
 
+" Elixir
+Plugin 'mhinz/vim-mix-format'
+
 " Syntastic Linting
 Plugin 'scrooloose/syntastic'
+
+" Wakatime
+Plugin 'wakatime/vim-wakatime'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -226,8 +236,7 @@ let g:syntastic_check_on_open=1
 let g:syntastic_javascript_checkers = ['eslint']
 
 " fzf
-set rtp+=/usr/local/opt/fzf " If installed using Homebrew
-"set rtp+=~ " if installed using git
+set rtp+=~/.fzf
 
 augroup vimrc_autocmd
   autocmd!
