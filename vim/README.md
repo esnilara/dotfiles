@@ -16,7 +16,7 @@ Use correct rtp folder for fzf (depending if installed with git or Homebrew)
 
 `vim ~/.vimrc`
 
-[Line 229-230](https://github.com/esnilara/dotfiles/blob/master/vim/.vimrc#L229-L230)
+[Lines 238-239](https://github.com/esnilara/dotfiles/blob/master/vim/.vimrc#L238-L239)
 
 ### Step 3
 
