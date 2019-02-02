@@ -10,9 +10,14 @@ abbr cl "clear"
 abbr es "ember server"
 abbr et "ember exam --split=4 --parallel"
 abbr ets "ember exam --server --random"
-abbr fs "foreman start"
 abbr fl "tail -f log/development.log"
-abbr er "rm -rf node_modules bower_components tmp dist; yarn install; bower install"
+abbr er "rm -rf node_modules tmp dist; yarn install"
+
+# Rails
+abbr fs "bundle exec foreman start"
+abbr rc "bundle exec rails c"
+abbr rs "bundle exec rails s -p 5000"
+abbr rcs "bundle exec rails c --sandbox"
 
 # Folder shortcuts
 abbr workspace "cd ~/workspace"
