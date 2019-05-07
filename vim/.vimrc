@@ -83,6 +83,9 @@ function! NumberToggle()
   endif
 endfunc
 
+" Mouse click navigation
+set mouse=a
+
 " The Silver Searcher Configuration
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
@@ -127,12 +130,11 @@ nmap ; :Buffers<CR>
 nmap <C-p> :Files<CR>
 nmap <Leader>r :Tags<CR>
 
-
 " Disable arrow keys
-"noremap <Up> <NOP>
-"noremap <Down> <NOP>
-"noremap <Left> <NOP>
-"noremap <Right> <NOP>
+" noremap <Up> <NOP>
+" noremap <Down> <NOP>
+" noremap <Left> <NOP>
+" noremap <Right> <NOP>
 
 " ======================================================================
 " UI TWEAKS
@@ -147,20 +149,19 @@ set statusline+=\ [line/col\ %l,%v]
 set enc=utf-8
 
 " Set 256 color support
-"set t_Co=256
-"set term=screen-256color
-"let $TERM='screen-256color'
-"let &t_AB="\e[48;5;%dm"
-"let &t_AF="\e[38;5;%dm"
+" set t_Co=256
+" set term=screen-256color
+" let $TERM='screen-256color'
+" let &t_AB="\e[48;5;%dm"
+" let &t_AF="\e[38;5;%dm"
 "
 " tmux bg_color correction hack
 set t_ut=
 
 " Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
-" if (has("nvim"))
-  " For Neovim 0.1.3 and 0.1.4
-"  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-" endif
+if (has("nvim"))
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
 
 " For Neovim > 0.1.5 and Vim > patch 7.4.1799
 if (has("termguicolors"))
@@ -195,7 +196,11 @@ Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'mattn/emmet-vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'Yggdroot/indentLine'
 Plugin 'Valloric/YouCompleteMe'
+
+" Tmux
+Plugin 'christoomey/vim-tmux-navigator'
 
 " Syntax support
 Plugin  'sheerun/vim-polyglot'
@@ -213,11 +218,11 @@ Plugin 'ngmy/vim-rubocop'
 " Elixir
 Plugin 'mhinz/vim-mix-format'
 
-" Syntastic Linting
-Plugin 'scrooloose/syntastic'
+" Linting
+Plugin 'w0rp/ale'
 
-" Wakatime
-Plugin 'wakatime/vim-wakatime'
+" CSS
+Plugin 'ap/vim-css-color'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -231,25 +236,20 @@ filetype plugin indent on    " required
 let g:nerdtree_tabs_open_on_console_startup=0        " Set on startup
 set wildignore+=/tmp/,*/tmp/*,*.so,*.swp,*.zip       " Ignore files
 
-" Syntastic
-let g:syntastic_check_on_open=1
-let g:syntastic_javascript_checkers = ['eslint']
+" FZF
+set rtp+=/usr/local/opt/fzf "osx
+" set rtp+=~/.fzf "linux
 
-" fzf
-set rtp+=~/.fzf
-
+" Autocmd
 augroup vimrc_autocmd
   autocmd!
   autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
-  autocmd BufNewFile,BufReadPost *.md, *.markdown set filetype=markdown
   autocmd BufNewFile,BufRead *.mustache,*.hogan,*.hulk,*.hjs set filetype=html.mustache syntax=mustache | runtime! ftplugin/mustache.vim ftplugin/mustache*.vim ftplugin/mustache/*.vim
   autocmd BufNewFile,BufRead *.handlebars,*.hbs set filetype=html.handlebars syntax=mustache | runtime! ftplugin/mustache.vim ftplugin/mustache*.vim ftplugin/mustache/*.vim
 augroup END
 
-" Disable HTML Tidy
-let g:syntastic_mode_map={ 'mode': 'active',
-                     \ 'active_filetypes': [],
-                     \ 'passive_filetypes': ['html'] }
-
 " GutenTags Cache Dir
 let g:gutentags_cache_dir = '~/.tags_cache'
+
+" IndentLine
+let g:indentLine_char = '┊'
