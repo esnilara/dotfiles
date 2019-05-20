@@ -1,4 +1,4 @@
-echo 'Greetings esnilara (=^ ◡ ^=)'
+echo "Greetings esnilara (=^ ◡ ^=)"
 
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -153,4 +153,4 @@ alias cmam="git commit --amend"
 alias cmm="git commit -m"
 alias cmma="git commit -am"
 
-
+DEFAULT_USER=esnilara
