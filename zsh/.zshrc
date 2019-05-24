@@ -77,6 +77,7 @@ ZSH_THEME="agnoster"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  git-extras
   asdf
   brew
   compleat
@@ -87,6 +88,7 @@ plugins=(
   tmux
   yarn
   z
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -123,8 +125,9 @@ alias sudo="sudo"
 # Ember
 alias es="ember server"
 alias et="ember exam --split=4 --parallel"
-alias ets="ember exam --server --random"
+alias ets="ember exam --s --random"
 alias er="rm -rf node_modules tmp dist; yarn install"
+alias etdust="./node_modules/.bin/cross-env NODE_ENV=test ember exam --s"
 
 # Rails
 alias fs="bundle exec foreman start"
@@ -144,7 +147,7 @@ alias gs="git status"
 alias ga="git add -A"
 alias gap="git add -p"
 alias go="git checkout"
-alias gb="git branch"
+alias gb="git branch -a"
 alias gbr="git branch -r"
 alias gr="git rebase"
 alias gl="git log --graph --oneline --decorate"
