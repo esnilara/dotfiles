@@ -126,8 +126,20 @@ alias sudo="sudo"
 alias es="ember server"
 alias et="ember exam --split=4 --parallel"
 alias ets="ember exam --s --random"
-alias er="rm -rf node_modules tmp dist; yarn install"
-alias etdust="./node_modules/.bin/cross-env NODE_ENV=test ember exam --s"
+
+# Intelius
+alias dbtest="./node_modules/.bin/cross-env NODE_ENV=test ember exam --random --s"
+alias dbtestf='./node_modules/.bin/cross-env NODE_ENV=test ember exam -s --filter=""'
+alias dbslink="yarn link"
+alias dblink="yarn link @peopleconnect/dustbunny-shared && yarn link"
+alias pelink="yarn link dustbunny"
+alias petest="yarn test:functional && yarn test:unit"
+
+# yarn
+alias yarnci="rm -rf node_modules tmp dist && yarn cache clean && yarn install"
+
+# npm
+alias npmci="rm -rf node_modules tmp dist && npm install"
 
 # Rails
 alias fs="bundle exec foreman start"
@@ -147,9 +159,10 @@ alias gs="git status"
 alias ga="git add -A"
 alias gap="git add -p"
 alias go="git checkout"
-alias gb="git branch -a"
+alias gb="git branch"
 alias gbr="git branch -r"
 alias gr="git rebase"
+alias gri="git rebase -i HEAD~"
 alias gl="git log --graph --oneline --decorate"
 alias psh="git push origin"
 alias pll="git pull origin"
