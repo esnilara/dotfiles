@@ -128,6 +128,11 @@ alias q="exit"
 alias cl="clear"
 alias sudo="sudo"
 
+# ls / Exa
+alias ls="exa --all --git"
+alias ll="exa --tree --long --git"
+alias lla="exa --tree --long --all --git"
+
 # Ember
 alias es="ember server"
 alias et="ember exam --split=4 --parallel"
