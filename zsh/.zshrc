@@ -1,15 +1,21 @@
-echo "Greetings esnilara (=^ ◡ ^=)"
+echo -e "\033[1mGreetings esnilara (=^ ◡ ^=)\033[0m"
+
+# compleat - https://github.com/mbrubeck/compleat
+autoload -Uz compinit bashcompinit
+compinit
+bashcompinit
 
 # If you come from bash you might have to change your $PATH.
-export PATH="/usr/local/sbin:$PATH"
+# export PATH="/usr/local/sbin:$PATH"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/esnilara/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/.asdf/bin:$PATH"
 export PATH="$HOME/.asdf/shims:$PATH"
 
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+# asdf - https://asdf-vm.com/#/core-manage-asdf-vm
+. /usr/local/opt/asdf/asdf.sh
+. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -127,14 +133,6 @@ alias es="ember server"
 alias et="ember exam --split=4 --parallel"
 alias ets="ember exam --s --random"
 
-# Intelius
-alias dbtest="./node_modules/.bin/cross-env NODE_ENV=test ember exam --random --s"
-alias dbtestf='./node_modules/.bin/cross-env NODE_ENV=test ember exam -s --filter=""'
-alias dbslink="yarn link"
-alias dblink="yarn link @peopleconnect/dustbunny-shared && yarn link"
-alias pelink="yarn link dustbunny"
-alias petest="yarn test:functional && yarn test:unit"
-
 # yarn
 alias yarnci="rm -rf node_modules tmp dist && yarn cache clean && yarn install"
 
@@ -171,4 +169,4 @@ alias cmam="git commit --amend"
 alias cmm="git commit -m"
 alias cmma="git commit -am"
 
-DEFAULT_USER=esnilara
+DEFAULT_USER=estebanlara
