@@ -61,9 +61,6 @@ else
   set clipboard=unnamedplus
 endif
 
-" Fish shell configuration
-set shell=/bin/sh
-
 " Remove Trailing White Space automatically on save
 fun! <SID>StripTrailingWhitespaces()
   let l = line(".")
@@ -92,11 +89,6 @@ if executable('ag')
 endif
 
 command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-
-" Teach a Vim to fish...
-if &shell =~# 'fish$'
-  set shell=sh
-endif
 
 " ======================================================================
 " KEY MAPS
