@@ -1,1 +1,0 @@
-/home/esnilara/.config/fisherman/z/functions/__zo.fish

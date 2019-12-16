@@ -1,1 +1,0 @@
-/home/esnilara/.config/fisherman/rvm/conf.d/rvm.fish

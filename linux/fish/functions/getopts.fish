@@ -1,1 +1,0 @@
-/home/esnilara/.config/fisherman/getopts/getopts.fish

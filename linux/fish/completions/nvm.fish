@@ -1,1 +1,0 @@
-/home/esnilara/.config/fisherman/nvm/completions/nvm.fish
