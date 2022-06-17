@@ -13,6 +13,21 @@ export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/.asdf/bin:$PATH"
 export PATH="$HOME/.asdf/shims:$PATH"
 
+# GO Lang
+export PATH="$PATH:/usr/local/go/bin"
+
+# Thrillshare Sidekiq
+export BUNDLE_ENTERPRISE__CONTRIBSYS__COM=
+
+# Imagemagick
+export PKG_CONFIG_PATH=/usr/local/Cellar/imagemagick@6/6.9.10-81/lib/pkgconfig
+
+# https://github.com/ansible/ansible/issues/32499
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
+# NPM Token
+export NPM_TOKEN=
+
 # asdf - https://asdf-vm.com/#/core-manage-asdf-vm
 . /usr/local/opt/asdf/asdf.sh
 . /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
@@ -132,11 +147,6 @@ alias sudo="sudo"
 alias ls="exa --all --git"
 alias ll="exa --tree --long --git"
 alias lla="exa --tree --long --all --git"
-
-# Ember
-alias es="ember server"
-alias et="ember exam --split=4 --parallel"
-alias ets="ember exam --s --random"
 
 # yarn
 alias yarnci="rm -rf node_modules tmp dist && yarn cache clean && yarn install"
