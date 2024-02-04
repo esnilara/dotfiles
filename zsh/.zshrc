@@ -1,22 +1,53 @@
+#  ____ ____ ____ ____ ____ ____ ____ ____
+# ||e |||s |||n |||i |||l |||a |||r |||a ||
+# ||__|||__|||__|||__|||__|||__|||__|||__||
+# |/__\|/__\|/__\|/__\|/__\|/__\|/__\|/__\|
+#
+# .zshrc
+#
+
 echo -e "\033[1mGreetings esnilara (=^ ◡ ^=)\033[0m"
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# ======================================================================
+# LunarVim  
+# ======================================================================
+export PATH=$HOME/.local/bin:$PATH
+alias vim=lvim
+alias nvim=lvim
+export EDITOR="lvim"
+export VISUAL="lvim"
+
+# ======================================================================
+#  Homebrew Paths  
+# ======================================================================
+
+# Python
+export PATH=/opt/homebrew/opt/python/libexec/bin:$PATH
+
+# ======================================================================
+#  Tokens  
+# ======================================================================
+
+# NPM Token
+export NPM_TOKEN=
+export DEFAULT_USER=
+
+# Github Token
+export BUNDLE_GITHUB__COM=
+export GITHUB_ACCESS_TOKEN=
+
+# ======================================================================
+#  oh-my-zsh  
+# ======================================================================
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# Theme to load
 ZSH_THEME="agnoster"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# fzf with the_silver_searcher
+export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -28,7 +59,7 @@ ZSH_THEME="agnoster"
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
 # zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+# zstyle ':omz:update' mode reminder  # just remind mq` to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
 # zstyle ':omz:update' frequency 13
@@ -74,11 +105,10 @@ ZSH_THEME="agnoster"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  git-extras
   asdf
-  brew
   compleat
   globalias
+  fzf
   npm
   macos
   tig
@@ -97,13 +127,6 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='mvim'
-fi
-
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -115,27 +138,42 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
 
+# ======================================================================
+#  Personal aliases  
+# ======================================================================
+
+# general
 alias q="exit"
 alias cl="clear"
 alias sudo="sudo"
-
-# ls / Exa
-alias ls="exa --all --git"
-alias ll="exa --tree --long --git"
-alias lla="exa --tree --long --all --git"
-
-# yarn
-alias yarnci="rm -rf node_modules tmp dist && yarn cache clean && yarn install"
+alias fzfp="fzf --preview 'bat --color=always {}'"
 
 # npm
 alias npmci="rm -rf node_modules tmp dist && npm install"
 
-# Rails
-alias fs="bundle exec foreman start"
-alias rc="bundle exec rails c"
-alias rs="bundle exec rails s -p 5000"
-alias rcs="bundle exec rails c --sandbox"
+# pnpm
+alias pn="pnpm"
+alias pnci="rm -rf node_modules tmp dist .output .nuxt && pnpm install"
+alias pnd="pnpm dev"
+alias pnb="pnpm build"
+alias pns="pnpm storybook"
+alias pnt="pnpm test"
+alias pno="pnpm outdated"
+
+function ptest() {
+  pnpm test -- ${1} --coverage=false
+}
+
+export PNPM_HOME="/Users/esnilara/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+# Jest
+alias jestclearcache="npx jest --clearCache"
 
 # Folder shortcuts
 alias workspace="cd ~/workspace"
@@ -154,6 +192,7 @@ alias gbr="git branch -r"
 alias gr="git rebase"
 alias gri="git rebase -i HEAD~"
 alias gl="git log --graph --oneline --decorate"
+alias glch="git rev-parse --verify HEAD"
 alias psh="git push origin"
 alias pll="git pull origin"
 alias cm="git commit"
@@ -161,8 +200,17 @@ alias cmam="git commit --amend"
 alias cmm="git commit -m"
 alias cmma="git commit -am"
 
-# Other PATHS
+# Apptegy
+alias clog="~/workspace/apptegy/clog/./clog"
+alias uno="/Users/esnilara/.asdf/installs/ruby/3.1.2/bin/neptuno"
 
-# NPM Token
-export NPM_TOKEN=
-export DEFAULT_USER=esnilara
+# Port management
+function whichport() {
+  sudo lsof -i ":${1}"
+}
+
+# Process management 
+function killprocess() {
+  kill -9 ${1}
+}
+
