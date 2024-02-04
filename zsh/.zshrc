@@ -180,6 +180,7 @@ alias workspace="cd ~/workspace"
 alias ws="cd ~/workspace"
 
 # Git
+alias lg="lazygit"
 alias gf="git fetch"
 alias gfo="git fetch origin"
 alias gfp="git fetch --prune"
