@@ -185,17 +185,12 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'mattn/emmet-vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Yggdroot/indentLine'
-Plugin 'Valloric/YouCompleteMe'
 
 " Tmux
 Plugin 'christoomey/vim-tmux-navigator'
-
-" Syntax support
-Plugin  'sheerun/vim-polyglot'
 
 " Git
 Plugin 'airblade/vim-gitgutter'
@@ -203,18 +198,6 @@ Plugin 'tpope/vim-fugitive'
 
 " Visual Enhancements
 Plugin 'nathanaelkane/vim-indent-guides'
-
-" Ruby
-Plugin 'ngmy/vim-rubocop'
-
-" Elixir
-Plugin 'mhinz/vim-mix-format'
-
-" Linting
-Plugin 'w0rp/ale'
-
-" CSS
-Plugin 'ap/vim-css-color'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -230,18 +213,6 @@ set wildignore+=/tmp/,*/tmp/*,*.so,*.swp,*.zip       " Ignore files
 
 " FZF
 set rtp+=/usr/local/opt/fzf "osx
-" set rtp+=~/.fzf "linux
-
-" Autocmd
-augroup vimrc_autocmd
-  autocmd!
-  autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
-  autocmd BufNewFile,BufRead *.mustache,*.hogan,*.hulk,*.hjs set filetype=html.mustache syntax=mustache | runtime! ftplugin/mustache.vim ftplugin/mustache*.vim ftplugin/mustache/*.vim
-  autocmd BufNewFile,BufRead *.handlebars,*.hbs set filetype=html.handlebars syntax=mustache | runtime! ftplugin/mustache.vim ftplugin/mustache*.vim ftplugin/mustache/*.vim
-augroup END
-
-" GutenTags Cache Dir
-let g:gutentags_cache_dir = '~/.tags_cache'
 
 " IndentLine
 let g:indentLine_char = '┊'

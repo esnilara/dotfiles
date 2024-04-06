@@ -6,17 +6,11 @@
 
 - `git clone https://github.com/esnilara/dotfiles`
 - `cp dotfiles/vim/.vimrc ~/`
-- `cp -r dotfiles/vim/colors/ ~/.vim/`
+- `cp -r dotfiles/vim/colors/ ~/.vim/colors/`
 
 ### Step 2
 
 [Install fzf](https://github.com/junegunn/fzf#using-homebrew-or-linuxbrew)
-
-Use correct rtp folder for fzf (depending if installed with git or Homebrew)
-
-`vim ~/.vimrc`
-
-[Lines 238-239](https://github.com/esnilara/dotfiles/blob/master/vim/.vimrc#L238-L239)
 
 ### Step 3
 
@@ -28,17 +22,8 @@ Install [Vundle - Quick Start steps 1 and 2](https://github.com/VundleVim/Vundle
 
 ### Step 5
 
-Install [YouCompleteMe](https://github.com/Valloric/YouCompleteMe#installation)
-
-### Step 6
-
 Install Vundle Plugins
 
 `vim ~/.vimrc`
 Type `:PluginInstall`
 
-### Step 7
-
-Make sure to clean .vimrc file if not using fish shell or removing any plugin.
-Change theme within the .vimrc and install themes inside `~/.vim/colors/` from
-[](https://github.com/flazz/vim-colorschemes/tree/master/colors)
