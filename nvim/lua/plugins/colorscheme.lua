@@ -2,10 +2,11 @@ return {
   { "rebelot/kanagawa.nvim" },
   { "ellisonleao/gruvbox.nvim" },
   { "shaunsingh/moonlight.nvim" },
-  -- {
-  --   "LazyVim/LazyVim",
-  --   opts = {
-  --     colorscheme = "moonlight",
-  --   },
-  -- },
+  { "carakan/new-railscasts-theme" },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "new-railscasts",
+    },
+  },
 }
