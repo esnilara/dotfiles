@@ -23,3 +23,24 @@ local function github_permalink_current_line()
 end
 
 vim.keymap.set("n", "<leader>gP", github_permalink_current_line, { desc = "GitHub permalink (blame SHA)" })
+
+local function open_term(cmd)
+  -- Create a brand-new empty buffer in a bottom split (not a copy of the current buffer)
+  vim.cmd("botright 15new")
+  vim.bo.bufhidden = "wipe" -- close buffer when window closes
+  vim.fn.termopen(cmd)
+  vim.cmd("startinsert")
+end
+
+-- Run current spec file
+vim.keymap.set("n", "<leader>tf", function()
+  local file = vim.fn.expand("%:p")
+  open_term("bundle exec rspec " .. file)
+end, { desc = "Terminal RSpec file" })
+
+-- Run spec at current line
+vim.keymap.set("n", "<leader>tR", function()
+  local file = vim.fn.expand("%:p")
+  local line = vim.fn.line(".")
+  open_term("bundle exec rspec " .. file .. ":" .. line)
+end, { desc = "Terminal RSpec line" })
