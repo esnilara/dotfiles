@@ -4,116 +4,43 @@
 # |/__\|/__\|/__\|/__\|/__\|/__\|/__\|/__\|
 #
 # .zshrc
-#
 
-echo -e "\033[1mGreetings esnilara (=^ ◡ ^=)\033[0m"
+echo -e "\033[1mGreetings ${USER} (=^ ◡ ^=)\033[0m"
 
-# ======================================================================
-#  oh-my-zsh
-# ======================================================================
-export DEFAULT_USER=esteban.lara
-
-# Path to your oh-my-zsh installation.
+export DEFAULT_USER="$USER"
 export ZSH="$HOME/.oh-my-zsh"
-
-# Theme to load
-ZSH_THEME="agnoster"
-
-# fzf with the_silver_searcher
 export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+ZSH_THEME="agnoster"
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+plugins=(git globalias z)
 
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind mq` to update when it's time
+command -v asdf >/dev/null 2>&1 && plugins+=(asdf)
+command -v fzf >/dev/null 2>&1 && plugins+=(fzf)
+command -v npm >/dev/null 2>&1 && plugins+=(npm)
+command -v tig >/dev/null 2>&1 && plugins+=(tig)
+command -v tmux >/dev/null 2>&1 && plugins+=(tmux)
+command -v yarn >/dev/null 2>&1 && plugins+=(yarn)
+[[ "$OSTYPE" == darwin* ]] && plugins+=(macos)
 
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-  asdf
-  compleat
-  globalias
-  fzf
-  npm
-  macos
-  tig
-  tmux
-  yarn
-  z
-)
-
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 
 # zsh-syntax-highlighting
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if command -v brew >/dev/null 2>&1; then
+  local zsh_syntax_file="$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+ [ -f "$zsh_syntax_file" ] && source "$zsh_syntax_file"
+fi
 
-# User configuration
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+fi
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# Load Elastic Stack environment
+[ -f "$HOME/.elastic-env" ] && . "$HOME/.elastic-env"
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-#
+if command -v wt >/dev/null 2>&1; then 
+  eval "$(command wt config shell init zsh)"
+fi
 
 # ======================================================================
 #  Personal aliases
@@ -138,15 +65,15 @@ alias pnt="pnpm test"
 alias pno="pnpm outdated"
 
 function ptest() {
-  pnpm test -- ${1} --coverage=false
+  pnpm test -- "${1}" --coverage=false
 }
 
 # Jest
 alias jestclearcache="npx jest --clearCache"
 
 # Folder shortcuts
-alias workspace="cd ~/workspace"
-alias ws="cd ~/workspace"
+alias workspace='cd "$HOME/workspace"'
+alias ws='cd "$HOME/workspace"'
 
 # Git
 cherry_pick_range() {
@@ -213,10 +140,12 @@ function whichport() {
 
 # Process management
 function killprocess() {
-  kill -9 ${1}
+  kill -9 "${1}"
 }
 
+# ======================================================================
 # Fleetio
+# ======================================================================
 
 alias upd="bin/update"
 alias migrate-status-leader="bundle exec rake db:migrate:status:leader"
@@ -235,8 +164,8 @@ alias storybook="pnpm run storybook"
 
 alias porter-list="porter cluster list"
 alias porter-prod="porter config set-cluster 2652"
-alias porter-stage="porter config set--cluster 2587"
-alias kibana="~/opt/kibana/bin/kibana"
+alias porter-stage="porter config set-cluster 2587"
+alias kibana="$HOME/opt/kibana/bin/kibana"
 
 alias lint-all='
   pnpm run lint &&
@@ -273,11 +202,5 @@ fleetio_rollback_added_migrations() {
   done
 }
 
-# task to add feature flags to our codebase:
-# bin/rails g fleetio:feature_flag ff_my_feature_flag
-eval "$(mise activate zsh)"
-
-# Load Elastic Stack environment
-[ -f "$HOME/.elastic-env" ] && . "$HOME/.elastic-env"
-
-if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+# Local overrides (machine-specific, not tracked)
+[ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
