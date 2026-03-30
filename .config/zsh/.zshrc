@@ -9,36 +9,9 @@
 echo -e "\033[1mGreetings esnilara (=^ ◡ ^=)\033[0m"
 
 # ======================================================================
-# LunarVim  
+#  oh-my-zsh
 # ======================================================================
-export PATH=$HOME/.local/bin:$PATH
-alias vim=lvim
-alias nvim=lvim
-export EDITOR="lvim"
-export VISUAL="lvim"
-
-# ======================================================================
-#  Homebrew Paths  
-# ======================================================================
-
-# Python
-export PATH=/opt/homebrew/opt/python/libexec/bin:$PATH
-
-# ======================================================================
-#  Tokens  
-# ======================================================================
-
-# NPM Token
-export NPM_TOKEN=
-export DEFAULT_USER=
-
-# Github Token
-export BUNDLE_GITHUB__COM=
-export GITHUB_ACCESS_TOKEN=
-
-# ======================================================================
-#  oh-my-zsh  
-# ======================================================================
+export DEFAULT_USER=esteban.lara
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -115,10 +88,12 @@ plugins=(
   tmux
   yarn
   z
-  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
+
+# zsh-syntax-highlighting
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # User configuration
 
@@ -141,7 +116,7 @@ source $ZSH/oh-my-zsh.sh
 #
 
 # ======================================================================
-#  Personal aliases  
+#  Personal aliases
 # ======================================================================
 
 # general
@@ -155,7 +130,7 @@ alias npmci="rm -rf node_modules tmp dist && npm install"
 
 # pnpm
 alias pn="pnpm"
-alias pnci="rm -rf node_modules tmp dist .output .nuxt && pnpm install"
+alias pnci="rm -rf node_modules && pnpm install"
 alias pnd="pnpm dev"
 alias pnb="pnpm build"
 alias pns="pnpm storybook"
@@ -166,12 +141,6 @@ function ptest() {
   pnpm test -- ${1} --coverage=false
 }
 
-export PNPM_HOME="/Users/esnilara/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-
 # Jest
 alias jestclearcache="npx jest --clearCache"
 
@@ -180,38 +149,135 @@ alias workspace="cd ~/workspace"
 alias ws="cd ~/workspace"
 
 # Git
-alias lg="lazygit"
-alias gf="git fetch"
-alias gfo="git fetch origin"
-alias gfp="git fetch --prune"
-alias gs="git status"
-alias ga="git add -A"
-alias gap="git add -p"
-alias go="git checkout"
-alias gb="git branch"
-alias gbr="git branch -r"
-alias gr="git rebase"
-alias gri="git rebase -i HEAD~"
-alias gl="git log --graph --oneline --decorate"
-alias glch="git rev-parse --verify HEAD"
-alias psh="git push origin"
-alias pll="git pull origin"
+cherry_pick_range() {
+  local dry_run=0
+
+  # Check for -n or --dry-run flag
+  if [[ $1 == "-n" || $1 == "--dry-run" ]]; then
+    dry_run=1
+    shift
+  fi
+
+  # Ensure we have exactly two arguments
+  if [[ $# -ne 2 ]]; then
+    echo "Usage: gcp [-n|--dry-run] <first_commit> <last_commit>"
+    return 1
+  fi
+
+  local first_commit=$1
+  local last_commit=$2
+
+  if [[ $dry_run -eq 1 ]]; then
+    echo "Performing dry run cherry-pick: $first_commit^..$last_commit"
+    git cherry-pick --dry-run "${first_commit}^..${last_commit}"
+  else
+    git cherry-pick "${first_commit}^..${last_commit}"
+  fi
+}
+
 alias cm="git commit"
 alias cmam="git commit --amend"
 alias cmm="git commit -m"
 alias cmma="git commit -am"
+alias ga="git add -A"
+alias gap="git add -p"
+alias gb="git branch"
+alias gbr="git branch -r"
+alias gcp="cherry_pick_range"
+alias gf="git fetch"
+alias gfo="git fetch origin"
+alias gfp="git fetch --prune"
+alias gl="git log --graph --oneline --decorate"
+alias glch="git rev-parse --verify HEAD"
+alias go="git checkout"
+alias gr="git rebase"
+alias gri="git rebase -i HEAD~"
+alias gs="git status"
+alias psh="git push origin"
+alias pll="git pull origin"
+alias lg="lazygit"
 
-# Apptegy
-alias clog="~/workspace/apptegy/clog/./clog"
-alias uno="/Users/esnilara/.asdf/installs/ruby/3.1.2/bin/neptuno"
+function psh-fwl() {
+  git push --force-with-lease origin "${1:-HEAD}"
+}
+
+# Overmind
+alias ovs="overmind start"
+alias ovk="overmind kill"
+alias ovc="overmind connect"
 
 # Port management
 function whichport() {
   sudo lsof -i ":${1}"
 }
 
-# Process management 
+# Process management
 function killprocess() {
   kill -9 ${1}
 }
 
+# Fleetio
+
+alias upd="bin/update"
+alias migrate-status-leader="bundle exec rake db:migrate:status:leader"
+alias reset-test-db="bundle exec rails db:reset RAILS_ENV=test"
+alias i18n="./bin/i18n-var-replace-and-translate"
+
+alias rspec="bundle exec rspec"
+alias rspecdoc="bundle exec rspec --format documentation"
+alias rubocop="bundle exec rubocop --parallel"
+
+alias rails="bundle exec rails"
+alias sandbox="bundle exec rails c --sandbox"
+alias rcons="bundle exec rails c"
+
+alias storybook="pnpm run storybook"
+
+alias porter-list="porter cluster list"
+alias porter-prod="porter config set-cluster 2652"
+alias porter-stage="porter config set--cluster 2587"
+alias kibana="~/opt/kibana/bin/kibana"
+
+alias lint-all='
+  pnpm run lint &&
+  pnpm run tsc:check &&
+  bin/brakeman --ignore-config ./config/brakeman.ignore --exit-on-warn . &&
+  bin/reek &&
+  bin/lint_i18n_variables &&
+  bin/lint_engine_imports &&
+  bin/packwerk check &&
+  bin/lint-foreign-keys &&
+  bin/lint-foreign-key-indexes &&
+  bin/lint-jobs-are-sidekiq-workers &&
+  bin/lint-api-error-responses &&
+  bin/lint-jobs &&
+  bin/lint-package-yml &&
+  bin/lint-codeowners &&
+  bin/lint-package-stewards &&
+  echo "✅ All linters passed successfully!"
+'
+
+fleetio_rollback_added_migrations() {
+  # Change this if your base branch is not master
+  local base_branch="master"
+
+  # Get the list of added migration files (most recent first)
+  local added_migrations=($(git diff --name-status $base_branch...HEAD | grep 'A\s*db/migrate/' | awk '{print $2}' | sort -r))
+
+  for file in "${added_migrations[@]}"; do
+    local timestamp=$(echo $file | grep -oE '[0-9]{14}')
+    if [[ -n "$timestamp" ]]; then
+      echo "Rolling back migration: $file"
+      bundle exec rake db:migrate:down:leader VERSION=$timestamp
+    fi
+  done
+}
+
+# task to add feature flags to our codebase:
+# bin/rails g fleetio:feature_flag ff_my_feature_flag
+eval "$(mise activate zsh)"
+
+# Load Elastic Stack environment
+[ -f "$HOME/.elastic-env" ] && . "$HOME/.elastic-env"
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
