@@ -31,10 +31,10 @@ yadm bootstrap
 ```
 
 This will:
-- Install Homebrew (if needed)
+- Install [Homebrew](https://brew.sh/) (if needed)
 - Install all packages from .Brewfile
-- Install Oh My Zsh
-- Configure Ghostty
+- Install [Oh My Zsh](https://ohmyz.sh/)
+- Configure [Ghostty](https://ghostty.org/)
 - Set up fonts
 - Configure shell environment
 
