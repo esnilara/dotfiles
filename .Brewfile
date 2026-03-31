@@ -14,9 +14,10 @@ brew "overmind"
 brew "lazygit"
 brew "libpq"
 brew "openjdk"
-brew "yarn"
-brew "pnpm"
 brew "svgo"
+
+# Terminal
+cask "ghostty"
 
 # Fonts
 cask "font-jetbrains-mono-nerd-font"

@@ -55,20 +55,39 @@ install_oh_my_zsh() {
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 }
 
+install_mise_tooling() {
+  if ! has_cmd mise; then
+    return
+  fi
+
+  log "Installing mise runtimes"
+
+  if ! mise ls node 2>/dev/null | grep -q .; then
+    mise use -g node@lts
+  fi
+
+  if ! mise ls pnpm 2>/dev/null | grep -q .; then
+    mise use -g pnpm@latest
+  fi
+
+  if ! mise ls yarn 2>/dev/null | grep -q .; then
+    mise use -g yarn@latest
+  fi
+}
+
 configure_ghostty() {
   log "Configuring Ghostty"
 
   local app_support_dir="$HOME/Library/Application Support/com.mitchellh.ghostty"
   local config_file="$app_support_dir/config.ghostty"
+  local backup_file="$app_support_dir/config.ghostty.backup"
 
-  # If App Support config exists, disable it
-  if [ -f "$config_file" ]; then
-    log "Disabling App Support Ghostty config"
-    mv "$config_file" "$config_file.backup"
-  fi
-
-  # Ensure directory exists (Ghostty may expect it)
   mkdir -p "$app_support_dir"
+
+  if [ -f "$config_file" ] && [ ! -f "$backup_file" ]; then
+    log "Disabling App Support Ghostty config"
+    mv "$config_file" "$backup_file"
+  fi
 
   log "Ghostty will use XDG config (~/.config/ghostty)"
 }
@@ -84,6 +103,8 @@ post_install() {
       "$brew_prefix/opt/fzf/install" --key-bindings --completion --no-update-rc || true
     fi
   fi
+
+  install_mise_tooling
 
   if ! has_cmd wt; then
     warn "wt not found (Warp). Install via Warp if needed."
