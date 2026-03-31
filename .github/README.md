@@ -31,12 +31,12 @@ yadm bootstrap
 ```
 
 This will:
-	•	Install Homebrew (if needed)
-	•	Install all packages from .Brewfile
-	•	Install Oh My Zsh
-	•	Configure Ghostty
-	•	Set up fonts
-	•	Configure shell environment
+- Install Homebrew (if needed)
+- Install all packages from .Brewfile
+- Install Oh My Zsh
+- Configure Ghostty
+- Set up fonts
+- Configure shell environment
 
 ---
 
@@ -67,17 +67,20 @@ Add it to GitHub:
 
 #### 🧠 Notes
 
-- Shell config is located in:
+Shell config is located in:
+
 ```bash
 ~/.config/zsh/
 ```
 
-- Ghostty config:
+Ghostty config:
+
 ```bash
 ~/.config/ghostty/config.ghostty
 ```
 
-- Machine-specific overrides
+Machine-specific overrides
+
 ```bash
 ~/.zprofile.local
 ~/.zshrc.local
@@ -97,7 +100,7 @@ To update dotfiles:
 ```bash
 yadm pull
 ```
---- 
+---
 
 #### 🛠 Troubleshooting
 
@@ -117,14 +120,12 @@ command -v tmux mise rg fzf pnpm
 
 #### 📦 Included tools
 
-- neovim
-- ripgrep
-- fzf
-- tmux
-- mise
-- lazygit
-- overmind
-- pnpm / node
-- JetBrains Mono Nerd Fonts
-- Powerline Fonts
+- [neovim](https://neovim.io/)
+- [ripgrep](https://github.com/burntsushi/ripgrep)
+- [fzf](https://github.com/junegunn/fzf)
+- [mise](https://github.com/jdx/mise)
+- [lazygit](https://github.com/jesseduffield/lazygit)
+- [overmind](https://github.com/DarthSim/overmind)
+- [tmux](https://github.com/tmux/tmux)
+- [JetBrains Mono Nerd Fonts](https://www.jetbrains.com/lp/mono/)
 
