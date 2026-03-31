@@ -18,5 +18,6 @@ brew "yarn"
 brew "pnpm"
 brew "svgo"
 
-tap "homebrew/core"
-tap "homebrew/cask"
+# Fonts
+cask "font-jetbrains-mono-nerd-font"
+cask "font-menlo-for-powerline"

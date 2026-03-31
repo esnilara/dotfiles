@@ -55,30 +55,22 @@ install_oh_my_zsh() {
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 }
 
-install_fonts() {
-  local source_dir="$HOME/fonts"
-  local font_dir
+configure_ghostty() {
+  log "Configuring Ghostty"
 
-  if [[ "$(uname -s)" == "Darwin" ]]; then
-    font_dir="$HOME/Library/Fonts"
-  else
-    font_dir="$HOME/.local/share/fonts"
+  local app_support_dir="$HOME/Library/Application Support/com.mitchellh.ghostty"
+  local config_file="$app_support_dir/config.ghostty"
+
+  # If App Support config exists, disable it
+  if [ -f "$config_file" ]; then
+    log "Disabling App Support Ghostty config"
+    mv "$config_file" "$config_file.backup"
   fi
 
-  if [ ! -d "$source_dir" ]; then
-    log "No ~/fonts directory found, skipping fonts"
-    return
-  fi
+  # Ensure directory exists (Ghostty may expect it)
+  mkdir -p "$app_support_dir"
 
-  log "Installing fonts → $font_dir"
-  mkdir -p "$font_dir"
-
-  rsync -a "$source_dir/" "$font_dir/"
-
-  if has_cmd fc-cache; then
-    log "Refreshing font cache"
-    fc-cache -fv
-  fi
+  log "Ghostty will use XDG config (~/.config/ghostty)"
 }
 
 post_install() {
@@ -113,7 +105,7 @@ main() {
   esac
 
   install_oh_my_zsh
-  install_fonts
+  configure_ghostty
   post_install
 
   log "Bootstrap complete"
