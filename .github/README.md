@@ -30,8 +30,101 @@ yadm clone git@github.com:esnilara/dotfiles.git
 yadm bootstrap
 ```
 
-### To Update dotfiles
+This will:
+	•	Install Homebrew (if needed)
+	•	Install all packages from .Brewfile
+	•	Install Oh My Zsh
+	•	Configure Ghostty
+	•	Set up fonts
+	•	Configure shell environment
+
+---
+
+#### 🔑 SSH setup (per machine)
+
+This repo does not include private SSH keys.
+After cloning, generate a new key:
+
+```bash
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+Start the agent and add the key:
+
+```bash
+eval "$(ssh-agent -s)"
+ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+```
+Then copy the public key:
+
+```bash
+cat ~/.ssh/id_ed25519.pub
+```
+
+Add it to GitHub:
+👉 https://github.com/settings/keys
+
+---
+
+#### 🧠 Notes
+
+- Shell config is located in:
+```bash
+~/.config/zsh/
+```
+
+- Ghostty config:
+```bash
+~/.config/ghostty/config.ghostty
+```
+
+- Machine-specific overrides
+```bash
+~/.zprofile.local
+~/.zshrc.local
+```
+---
+
+#### 🔄 Updating
+
+To update packages:
+
+```bash
+brew bundle
+```
+
+To update dotfiles:
 
 ```bash
 yadm pull
 ```
+--- 
+
+#### 🛠 Troubleshooting
+
+Restart Shell (After bootstrap)
+
+```bash
+exec zsh
+```
+
+Check installed tools
+
+```bash
+command -v tmux mise rg fzf pnpm
+```
+
+---
+
+#### 📦 Included tools
+
+- neovim
+- ripgrep
+- fzf
+- tmux
+- mise
+- lazygit
+- overmind
+- pnpm / node
+- JetBrains Mono Nerd Fonts
+- Powerline Fonts
+
