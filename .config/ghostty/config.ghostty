@@ -1,10 +1,17 @@
 shell-integration = zsh
-font-size = 15
+font-family = "JetBrainsMono Nerd Font"
+font-size = 14
 font-thicken = true
+
+background-opacity = 0.95
 theme = Adventure Time
+macos-icon = retro
+window-padding-x = 10
+window-padding-y = 10
+
 mouse-hide-while-typing = true
 scrollback-limit = 1000000
-macos-icon = retro
+cursor-style = block
 
 keybind = ctrl+a>c=new_tab
 
