@@ -15,7 +15,7 @@ ZSH_THEME="agnoster"
 
 plugins=(git globalias z)
 
-command -v asdf >/dev/null 2>&1 && plugins+=(asdf)
+command -v mise >/dev/null 2>&1 && plugins+=(mise)
 command -v fzf >/dev/null 2>&1 && plugins+=(fzf)
 command -v npm >/dev/null 2>&1 && plugins+=(npm)
 command -v tig >/dev/null 2>&1 && plugins+=(tig)
