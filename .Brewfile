@@ -10,6 +10,7 @@ brew "zsh-syntax-highlighting"
 
 # CLI tools
 brew "bat"
+brew "btop"
 brew "overmind"
 brew "lazygit"
 brew "libpq"

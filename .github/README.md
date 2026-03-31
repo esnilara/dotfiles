@@ -121,6 +121,7 @@ command -v tmux mise rg fzf pnpm
 #### 📦 Included tools
 
 - [neovim](https://neovim.io/)
+- [btop](https://github.com/aristocratos/btop)
 - [ripgrep](https://github.com/burntsushi/ripgrep)
 - [fzf](https://github.com/junegunn/fzf)
 - [mise](https://github.com/jdx/mise)
