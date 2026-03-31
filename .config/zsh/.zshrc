@@ -9,7 +9,7 @@ echo -e "\033[1mGreetings ${USER} (=^ ◡ ^=)\033[0m"
 
 export DEFAULT_USER="$USER"
 export ZSH="$HOME/.oh-my-zsh"
-export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git/*"'
 
 ZSH_THEME="agnoster"
 
