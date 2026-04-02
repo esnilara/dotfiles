@@ -1,0 +1,8 @@
+[tools]
+node = "22"
+ruby = "3.4"
+pnpm = "latest"
+yarn = "latest"
+
+[settings]
+idiomatic_version_file_enable_tools = ["ruby"]
