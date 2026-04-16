@@ -3,3 +3,4 @@
 -- Add any additional options here
 -- vim.g.autoformat = false
 vim.g.ai_cmp = false
+vim.g.lazyvim_ts_lsp = "tsgo"
