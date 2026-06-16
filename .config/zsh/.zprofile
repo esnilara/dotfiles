@@ -7,9 +7,13 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 export PGDATABASE="postgres"
 
+# User-installed binaries
+export PATH="$HOME/.local/bin:$PATH"
+
 if command -v brew >/dev/null 2>&1; then
   export ES_JAVA_HOME="$(brew --prefix openjdk)"
   export PATH="$(brew --prefix libpq)/bin:$ES_JAVA_HOME/bin:$PATH"
 fi
 
 [ -f "$HOME/.zprofile.local" ] && source "$HOME/.zprofile.local"
+
