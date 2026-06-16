@@ -1,8 +1,11 @@
 [tools]
 node = "22"
-ruby = "3.4"
+ruby = "4.0.3"
 pnpm = "latest"
 yarn = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["ruby"]
+
+[settings.ruby]
+compile = true
