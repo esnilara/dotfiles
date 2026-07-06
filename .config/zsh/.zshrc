@@ -167,6 +167,9 @@ alias porter-prod="porter config set-cluster 2652"
 alias porter-stage="porter config set-cluster 2587"
 alias kibana="$HOME/opt/kibana/bin/kibana"
 
+# https://gist.github.com/jackspiva/8bbcc08e7e3fe4f5f1313980c12f14ca
+alias cpace='ruby ~/.claude/cpace.rb'
+
 alias lint-all='
   pnpm run lint &&
   pnpm run tsc:check &&
@@ -197,7 +200,7 @@ fleetio_rollback_added_migrations() {
     local timestamp=$(echo $file | grep -oE '[0-9]{14}')
     if [[ -n "$timestamp" ]]; then
       echo "Rolling back migration: $file"
-      bundle exec rake db:migrate:down:leader VERSION=$timestamp
+      bundle exec rake db:migrate:down:leader VERSION=$timestamp --trace
     fi
   done
 }
